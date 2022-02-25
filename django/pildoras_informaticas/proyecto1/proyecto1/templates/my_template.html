@@ -1,0 +1,32 @@
+<html>
+    <body>
+        {% include "superior/barra.html" %}
+
+    <h2 style="color: red">
+    Hola alumnos, esta es nuestra primera plantilla
+    </h2>
+    {% comment %}
+        {# NO TEMAS DISEÑADOR!
+        IGNORA ESTA PARTE #}
+    {% endcomment %}
+    {% if nombre_persona == 'Profesor Juan' %}
+        <p>El curso lo imparte el profesor titular</p>
+    {% else %}
+        <p>El curso lo imparte el profesor suplente</p>
+    {% endif %}
+    <p>El nombre del profesor es: {{nombre_persona|lower}} {{apellido_persona.upper}}</p>
+    <p>Estamos viendo el tema de las plantillas a día: {{momento_actual.day}}/{{momento_actual.month}}/{{momento_actual.year}}</p>
+    <p><strong>Temas del curso:</strong></p>
+    <p>
+        <ul>
+        {% if temas %}
+            {% for tema in temas%}
+                <li>{{tema|first|lower}}</li>
+            {% endfor %}
+        {% else %}
+            <p>No hay elementos que mostrar</p>
+        {% endif %}
+        </ul>
+    </p>
+    </body>
+</html>
