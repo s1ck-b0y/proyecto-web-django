@@ -5,19 +5,19 @@
 {% block content %}
     <div class="container">
         <div style="float:right;">
-            <p style="color:white;">Texto de prueba</p>
+            {% include "carro/widget.html" %}
         </div>
         <div class="row">
             {% for producto in productos %}
-                <div class="col">
-                    <div class="card" style="width:100%; margin: 5px 5px;">
-                        <img class="card-img-top" object-fit=cover src="{{producto.imagen.url}}">
+                <div class="col-3">
+                    <div class="card h-100" style="width:100%; margin: 5px 5px;">
+                        <img class="card-img-top" src="{{producto.imagen.url}}">
                         <div class="card-body" style="text-align: center;">
                             <h7 class="card-title">{{producto.nombre}}</h7>
                             <p class="card-text">{{producto.precio}}&nbsp;$</p>
                         </div>
                         <div class="card-footer text-center">
-                            <a href="#" class="btn btn-success">Agregar al carro</a>
+                            <a href="{% url 'carro:agregar' producto.id %}" class="btn btn-success">Agregar al carro</a>
                         </div>
                     </div>
                 </div>
